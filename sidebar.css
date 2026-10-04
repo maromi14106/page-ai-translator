@@ -1,0 +1,255 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 260px;
+  margin: 0;
+  background: Canvas;
+  color: CanvasText;
+}
+
+main {
+  padding: 14px;
+}
+
+.app-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.version {
+  margin: 2px 0 0;
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.card {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin: 8px 0 5px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px 9px;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 7px;
+  background: Canvas;
+  color: CanvasText;
+  font: inherit;
+}
+
+button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  background: #2f6feb;
+  color: white;
+}
+
+button.secondary {
+  background: #5f6b7a;
+}
+
+button.ghost {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: inherit;
+}
+
+button.danger {
+  background: #b42318;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.link-button {
+  width: auto;
+  margin: 0;
+  padding: 2px 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.label-row,
+.status-row,
+.progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.label-row label {
+  margin-bottom: 5px;
+}
+
+.status-row {
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.status-row strong {
+  text-align: right;
+}
+
+.hint,
+.footer-note,
+.result,
+.progress-label {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hint {
+  margin: 5px 0 0;
+  opacity: 0.68;
+}
+
+.result {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 8px;
+}
+
+.result p {
+  margin: 0;
+}
+
+.progress-wrap {
+  margin-top: 12px;
+}
+
+.progress-label {
+  margin-bottom: 5px;
+}
+
+progress {
+  width: 100%;
+}
+
+.footer-note {
+  margin: 2px 2px 0;
+  opacity: 0.65;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.view-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.view-buttons button {
+  margin-top: 8px;
+}
+
+.view-buttons button.active-view {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+button.compact-button {
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 72px;
+  padding: 8px 9px;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 7px;
+  resize: vertical;
+  background: Canvas;
+  color: CanvasText;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.selection-help {
+  margin-top: 0;
+}
+
+
+.cache-list {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.cache-item {
+  padding: 9px;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 8px;
+}
+
+.cache-item-url {
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.cache-item-meta {
+  margin-top: 5px;
+  font-size: 10px;
+  opacity: 0.72;
+}
+
+.cache-item-actions {
+  margin-top: 7px;
+}
+
+.cache-item-actions button {
+  margin-top: 0;
+  padding: 6px 8px;
+  font-size: 10px;
+}
