@@ -34,11 +34,13 @@ Mozilla Public License 2.0 (MPL-2.0)
 
 ## サポート
 
-不具合報告や機能要望は、GitHub Issuesで受け付ける予定です。
+不具合報告や機能要望は [GitHub Issues](https://github.com/maromi14106/page-ai-translator/issues) へお願いします。
 
 ## 開発支援
 
-Ko-fiリンクは公開後に追加予定です。
+Page AI Translator が役に立った場合は、Ko-fiから開発を支援できます。
+
+[Ko-fiで支援する](https://ko-fi.com/maromi14106)
 
 ---
 
