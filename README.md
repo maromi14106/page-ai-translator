@@ -23,6 +23,36 @@ Firefox Add-onsからインストールできます。
 - 動的ページ内容の検出
 - `Ctrl + Shift + .` でサイドバーを開閉
 
+## Ollamaのセットアップ
+
+Page AI TranslatorからローカルOllamaへ接続する場合、
+Firefox拡張機能からのアクセスを許可する必要があります。
+
+WindowsではPowerShellで次を実行してください。
+
+```powershell
+[Environment]::SetEnvironmentVariable(
+    "OLLAMA_ORIGINS",
+    "moz-extension://*",
+    "User"
+)
+
+設定後、Ollamaを完全に終了してから再起動してください。
+現在の設定を確認するには、次を実行します。
+[Environment]::GetEnvironmentVariable(
+    "OLLAMA_ORIGINS",
+    "User"
+)
+
+正常なら次のように表示されます。
+moz-extension://*
+
+403 Forbiddenが表示される場合
+Ollamaで翻訳したときに 403 Forbidden が表示される場合は、
+OLLAMA_ORIGINS が未設定、またはOllamaが設定変更後に
+再起動されていない可能性があります。
+設定を確認したうえで、Ollamaを完全終了して再起動してください。
+
 ## プライバシー
 
 OpenAIモードでは、翻訳対象の文章と翻訳指示をOpenAI APIへ送信します。
