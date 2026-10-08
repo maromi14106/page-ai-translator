@@ -5,6 +5,12 @@ FirefoxのサイドバーからWebページをAI翻訳するWebExtensionです�
 OpenAI APIとローカルOllamaに対応し、ページ全体の翻訳、選択範囲翻訳、
 複数言語、翻訳ルール、原文/翻訳文の切り替え、永続キャッシュを利用できます。
 
+## インストール
+
+Firefox Add-onsからインストールできます。
+
+[Page AI Translator - Firefox Add-ons](https://addons.mozilla.org/addon/page-ai-translator/)
+
 ## 主な機能
 
 - Webページ全体のAI翻訳
