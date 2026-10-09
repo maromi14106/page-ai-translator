@@ -1,0 +1,606 @@
+{
+  "extensionName": {
+    "message": "Page AI Translator"
+  },
+  "extensionDescription": {
+    "message": "FirefoxサイドバーからWebページをAI翻訳。OpenAI API / Ollama、選択範囲翻訳、多言語、翻訳ルール、永続キャッシュに対応。"
+  },
+  "actionTitle": {
+    "message": "Page AI Translator を開く"
+  },
+  "commandToggleSidebar": {
+    "message": "Page AI Translator サイドバーを開閉"
+  },
+  "labelEngine": {
+    "message": "翻訳エンジン"
+  },
+  "engineOllama": {
+    "message": "Ollama（ローカル）"
+  },
+  "labelOpenAIModel": {
+    "message": "OpenAIモデル"
+  },
+  "labelApiKey": {
+    "message": "APIキー"
+  },
+  "hintApiKeyNotStored": {
+    "message": "APIキーは保存しません。"
+  },
+  "hintOpenAIPrivacy": {
+    "message": "OpenAIモードでは翻訳対象のページ本文を api.openai.com へ送信します。初回利用時にFirefoxが送信許可を確認します。"
+  },
+  "labelOllamaModel": {
+    "message": "Ollamaモデル"
+  },
+  "buttonRefreshList": {
+    "message": "一覧を更新"
+  },
+  "ollamaModelPrompt": {
+    "message": "モデル一覧を取得してください"
+  },
+  "hintOllamaPrivacy": {
+    "message": "Ollamaモードの翻訳本文はローカルのOllamaへ送信します。"
+  },
+  "headingTranslationRules": {
+    "message": "翻訳ルール"
+  },
+  "labelTargetLanguage": {
+    "message": "翻訳先言語"
+  },
+  "labelTranslationStyle": {
+    "message": "訳し方"
+  },
+  "styleNatural": {
+    "message": "自然で読みやすく"
+  },
+  "styleFaithful": {
+    "message": "原文に忠実"
+  },
+  "styleConcise": {
+    "message": "簡潔に"
+  },
+  "labelTerminology": {
+    "message": "専門用語"
+  },
+  "terminologyBalanced": {
+    "message": "翻訳先言語として自然な表現を優先"
+  },
+  "terminologyPreserve": {
+    "message": "一般的な専門用語は原語を優先"
+  },
+  "terminologyTranslate": {
+    "message": "可能な範囲で翻訳先言語に訳す"
+  },
+  "labelCustomInstructions": {
+    "message": "追加ルール（任意）"
+  },
+  "placeholderCustomInstructions": {
+    "message": "例: ゲーム内のスキル名は英語のまま残す"
+  },
+  "hintRulesApply": {
+    "message": "この設定は全文翻訳と選択範囲翻訳の両方に適用されます。"
+  },
+  "labelPageState": {
+    "message": "ページ状態"
+  },
+  "statusChecking": {
+    "message": "確認中…"
+  },
+  "labelUntranslated": {
+    "message": "未翻訳"
+  },
+  "labelSavedCache": {
+    "message": "保存キャッシュ"
+  },
+  "buttonClearCurrentCache": {
+    "message": "現在設定の保存キャッシュを削除"
+  },
+  "headingSelectionTranslation": {
+    "message": "選択範囲翻訳"
+  },
+  "hintSelectionTranslation": {
+    "message": "Webページ上で文章を選択してから押してください。選択した部分だけをページ内で翻訳します。"
+  },
+  "labelSelection": {
+    "message": "選択範囲"
+  },
+  "statusUnchecked": {
+    "message": "未確認"
+  },
+  "buttonTranslateSelection": {
+    "message": "選択範囲を翻訳"
+  },
+  "buttonTranslateUntranslated": {
+    "message": "未翻訳部分を翻訳"
+  },
+  "buttonCancelTranslation": {
+    "message": "翻訳をキャンセル"
+  },
+  "buttonShowOriginal": {
+    "message": "原文を表示"
+  },
+  "buttonShowTranslation": {
+    "message": "翻訳文を表示"
+  },
+  "statusPreparing": {
+    "message": "準備中…"
+  },
+  "statusReady": {
+    "message": "準備完了。"
+  },
+  "headingCacheManagement": {
+    "message": "キャッシュ管理"
+  },
+  "cacheSummaryChecking": {
+    "message": "保存済みキャッシュを確認しています…"
+  },
+  "buttonClearAllCaches": {
+    "message": "翻訳キャッシュをすべて削除"
+  },
+  "footerShortcut": {
+    "message": "Ctrl + Shift + . でサイドバーを開閉できます。"
+  },
+  "profileDefault": {
+    "message": "$LANGUAGE$・標準設定",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "unknown": {
+    "message": "不明"
+  },
+  "styleShortNatural": {
+    "message": "自然"
+  },
+  "styleShortFaithful": {
+    "message": "忠実"
+  },
+  "styleShortConcise": {
+    "message": "簡潔"
+  },
+  "styleShortStandard": {
+    "message": "標準"
+  },
+  "profileLabel": {
+    "message": "$LANGUAGE$・$STYLE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      },
+      "style": {
+        "content": "$2"
+      }
+    }
+  },
+  "pagePartiallyTranslated": {
+    "message": "一部翻訳済み（キャッシュ $COUNT$か所）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslateNewText": {
+    "message": "新しく追加された文章を$LANGUAGE$へ翻訳",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingTranslation": {
+    "message": "翻訳文を表示中（$COUNT$か所）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingOriginal": {
+    "message": "原文を表示中（翻訳キャッシュ $COUNT$か所）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageMixed": {
+    "message": "原文・訳文混在（キャッシュ $COUNT$か所）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslatePendingTo": {
+    "message": "未翻訳部分を$LANGUAGE$へ翻訳",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageOriginal": {
+    "message": "原文"
+  },
+  "buttonTranslatePageTo": {
+    "message": "このページを$LANGUAGE$へ翻訳",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsNodesChars": {
+    "message": "$NODES$か所 / 約$CHARS$文字",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "countEntries": {
+    "message": "$COUNT$件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "none": {
+    "message": "なし"
+  },
+  "errorNoActiveTab": {
+    "message": "アクティブなタブを取得できませんでした。"
+  },
+  "errorContentScriptStart": {
+    "message": "ページ側スクリプトを起動できませんでした。"
+  },
+  "errorPageOperation": {
+    "message": "ページ操作に失敗しました。"
+  },
+  "errorTranslationsArrayMissing": {
+    "message": "AIの応答にtranslations配列がありません。"
+  },
+  "errorTranslationsMissing": {
+    "message": "AIの応答が不足しています（$COUNT$件）。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOpenAIConsent": {
+    "message": "OpenAIモードには、翻訳対象のページ本文をOpenAI APIへ送信する許可が必要です。"
+  },
+  "errorOpenAIKeyRequired": {
+    "message": "OpenAI APIキーを入力してください。"
+  },
+  "errorOpenAIModelRequired": {
+    "message": "OpenAIモデル名を入力してください。"
+  },
+  "errorOpenAIResultMissing": {
+    "message": "OpenAI APIから翻訳結果を取得できませんでした。"
+  },
+  "errorOpenAIJson": {
+    "message": "OpenAI APIの翻訳結果をJSONとして解析できませんでした。"
+  },
+  "ollamaConnectionTestHttp": {
+    "message": "Ollama接続テスト: HTTP $STATUS$ $TEXT$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorOllamaConnectionJson": {
+    "message": "Ollama接続テスト: JSON応答を解析できませんでした。"
+  },
+  "ollamaModelNotFound": {
+    "message": "モデルが見つかりません"
+  },
+  "ollamaConnectedNoModels": {
+    "message": "Ollamaへ接続できましたが、モデルがありません。"
+  },
+  "ollamaConnectedModels": {
+    "message": "Ollama接続OK。$COUNT$個のモデルを検出しました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ollamaModelFetchError": {
+    "message": "Ollamaモデル取得エラー: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOllamaModelRequired": {
+    "message": "Ollamaモデルを選択してください。"
+  },
+  "errorOllamaResultMissing": {
+    "message": "Ollamaから翻訳結果を取得できませんでした。"
+  },
+  "errorOllamaJson": {
+    "message": "Ollamaの翻訳結果をJSONとして解析できませんでした。"
+  },
+  "errorHostPermission": {
+    "message": "このサイトへのアクセス権限がありません。Firefoxの拡張機能設定で、この拡張機能のサイトアクセスを許可してください。"
+  },
+  "errorProtectedPage": {
+    "message": "このページはFirefoxの保護対象のため翻訳できません。通常のhttp/https Webページで試してください。"
+  },
+  "errorOllamaNetwork": {
+    "message": "Ollama APIとの通信に失敗しました。Ollamaの状態を確認してください。"
+  },
+  "errorOllamaForbidden": {
+    "message": "OllamaがFirefox拡張機能からの接続を拒否しました。Windowsでは OLLAMA_ORIGINS=moz-extension://* を設定し、Ollamaを完全終了して再起動してください。"
+  },
+  "errorPageDisconnected": {
+    "message": "ページとの接続が途中で切れました。タブの再読み込み・移動がなかったか確認してください。"
+  },
+  "errorGeneric": {
+    "message": "エラー: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageUnsupported": {
+    "message": "対象外 / 未確認"
+  },
+  "dateUnknown": {
+    "message": "日時不明"
+  },
+  "cacheSummarySaved": {
+    "message": "$COUNT$件のページ / 翻訳設定キャッシュを保存中",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cacheSummaryEmpty": {
+    "message": "保存済み翻訳キャッシュはありません。"
+  },
+  "cacheItemMeta": {
+    "message": "$PROFILE$ / $COUNT$件 / $DATE$",
+    "placeholders": {
+      "profile": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      },
+      "date": {
+        "content": "$3"
+      }
+    }
+  },
+  "buttonDeleteThisCache": {
+    "message": "このキャッシュを削除"
+  },
+  "cacheDeletedSelected": {
+    "message": "選択した保存キャッシュを削除しました。"
+  },
+  "cacheListError": {
+    "message": "キャッシュ一覧の取得に失敗しました: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmClearAllCaches": {
+    "message": "Page AI Translator の保存済み翻訳キャッシュをすべて削除しますか？\n\n翻訳エンジンや翻訳ルールなどの設定は残ります。"
+  },
+  "cacheAllDeleted": {
+    "message": "保存済み翻訳キャッシュをすべて削除しました。現在開いているタブ内の一時キャッシュはタブを閉じるまで残ります。"
+  },
+  "selectionStats": {
+    "message": "$NODES$か所 / 約$CHARS$文字",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "selectionNone": {
+    "message": "選択なし"
+  },
+  "selectionPrompt": {
+    "message": "Webページ上で翻訳したい文章を選択してから、もう一度押してください。"
+  },
+  "errorSelectionTooLong": {
+    "message": "選択範囲は約$CURRENT$文字あります。上限$MAX$文字を超えています。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressSelectionAI": {
+    "message": "選択範囲をAI翻訳中"
+  },
+  "messageSelectionAIBatch": {
+    "message": "選択範囲をAI翻訳中… バッチ $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorSelectionBatch": {
+    "message": "選択範囲 バッチ $CURRENT$/$TOTAL$: $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressSelection": {
+    "message": "選択範囲を翻訳中"
+  },
+  "selectionCancelled": {
+    "message": "選択範囲の翻訳をキャンセルしました。ページへの変更は行っていません。"
+  },
+  "selectionComplete": {
+    "message": "選択範囲の翻訳完了: $COUNT$か所を置換しました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressGettingText": {
+    "message": "文章を取得中"
+  },
+  "messageGettingText": {
+    "message": "ページから文章を取得しています…"
+  },
+  "noUntranslatedText": {
+    "message": "未翻訳の文章はありません。"
+  },
+  "errorPageTooLong": {
+    "message": "このページは約$CURRENT$文字あります。上限$MAX$文字を超えています。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressAI": {
+    "message": "AI翻訳中"
+  },
+  "messageAIBatch": {
+    "message": "AI翻訳中… バッチ $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorBatch": {
+    "message": "バッチ $CURRENT$/$TOTAL$: $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressApplying": {
+    "message": "ページへ反映中"
+  },
+  "errorApplyBatch": {
+    "message": "バッチ $CURRENT$/$TOTAL$ の反映: $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressTranslating": {
+    "message": "翻訳中"
+  },
+  "translationCancelled": {
+    "message": "翻訳をキャンセルしました。すでに反映済みの$COUNT$か所は残っています。「原文を表示」で元の文章を表示できます。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "translationComplete": {
+    "message": "翻訳完了: $COUNT$か所を翻訳しました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressCancelling": {
+    "message": "キャンセル中…"
+  },
+  "messageCancelling": {
+    "message": "現在のAIリクエストをキャンセルしています…"
+  },
+  "messageSwitchingOriginal": {
+    "message": "原文表示へ切り替えています…"
+  },
+  "messageOriginalShown": {
+    "message": "原文を表示しました。翻訳キャッシュは保持されています。"
+  },
+  "messageSwitchingTranslation": {
+    "message": "翻訳文表示へ切り替えています…"
+  },
+  "messageTranslationShown": {
+    "message": "保存済みの翻訳文を表示しました。AI通信は行っていません。"
+  },
+  "messageDeletingCurrentCache": {
+    "message": "現在設定の保存キャッシュを削除しています…"
+  },
+  "messageCurrentCacheDeleted": {
+    "message": "現在の翻訳設定に対応する保存キャッシュを削除しました。現在のタブ内一時キャッシュは、タブを閉じるまで利用できます。"
+  },
+  "messageNewTextDetected": {
+    "message": "新しい文章を$COUNT$か所検出しました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "initializationError": {
+    "message": "初期化エラー: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  }
+}

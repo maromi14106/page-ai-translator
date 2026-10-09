@@ -1,0 +1,606 @@
+{
+  "extensionName": {
+    "message": "Page AI Translator"
+  },
+  "extensionDescription": {
+    "message": "从 Firefox 侧边栏使用 OpenAI API 或 Ollama 对网页进行 AI 翻译，支持选中文本翻译、多语言、翻译规则和持久缓存。"
+  },
+  "actionTitle": {
+    "message": "打开 Page AI Translator"
+  },
+  "commandToggleSidebar": {
+    "message": "切换 Page AI Translator 侧边栏"
+  },
+  "labelEngine": {
+    "message": "翻译引擎"
+  },
+  "engineOllama": {
+    "message": "Ollama（本地）"
+  },
+  "labelOpenAIModel": {
+    "message": "OpenAI 模型"
+  },
+  "labelApiKey": {
+    "message": "API 密钥"
+  },
+  "hintApiKeyNotStored": {
+    "message": "API 密钥不会被保存。"
+  },
+  "hintOpenAIPrivacy": {
+    "message": "在 OpenAI 模式下，待翻译的页面文本会发送到 api.openai.com。首次使用前 Firefox 会请求发送权限。"
+  },
+  "labelOllamaModel": {
+    "message": "Ollama 模型"
+  },
+  "buttonRefreshList": {
+    "message": "刷新列表"
+  },
+  "ollamaModelPrompt": {
+    "message": "请先加载模型列表"
+  },
+  "hintOllamaPrivacy": {
+    "message": "在 Ollama 模式下，待翻译文本会发送到本地 Ollama。"
+  },
+  "headingTranslationRules": {
+    "message": "翻译规则"
+  },
+  "labelTargetLanguage": {
+    "message": "目标语言"
+  },
+  "labelTranslationStyle": {
+    "message": "翻译风格"
+  },
+  "styleNatural": {
+    "message": "自然易读"
+  },
+  "styleFaithful": {
+    "message": "忠实原文"
+  },
+  "styleConcise": {
+    "message": "简洁"
+  },
+  "labelTerminology": {
+    "message": "专业术语"
+  },
+  "terminologyBalanced": {
+    "message": "优先使用目标语言中的自然表达"
+  },
+  "terminologyPreserve": {
+    "message": "常见专业术语优先保留原文"
+  },
+  "terminologyTranslate": {
+    "message": "可行时翻译为目标语言"
+  },
+  "labelCustomInstructions": {
+    "message": "附加规则（可选）"
+  },
+  "placeholderCustomInstructions": {
+    "message": "示例：游戏中的技能名称保留英文"
+  },
+  "hintRulesApply": {
+    "message": "这些设置同时适用于整页翻译和选中文本翻译。"
+  },
+  "labelPageState": {
+    "message": "页面状态"
+  },
+  "statusChecking": {
+    "message": "正在检查…"
+  },
+  "labelUntranslated": {
+    "message": "未翻译"
+  },
+  "labelSavedCache": {
+    "message": "已保存缓存"
+  },
+  "buttonClearCurrentCache": {
+    "message": "删除当前设置的已保存缓存"
+  },
+  "headingSelectionTranslation": {
+    "message": "选中文本翻译"
+  },
+  "hintSelectionTranslation": {
+    "message": "请先在网页中选择文本，然后点击按钮。只会翻译页面中选中的部分。"
+  },
+  "labelSelection": {
+    "message": "选中文本"
+  },
+  "statusUnchecked": {
+    "message": "未检查"
+  },
+  "buttonTranslateSelection": {
+    "message": "翻译选中文本"
+  },
+  "buttonTranslateUntranslated": {
+    "message": "翻译未翻译部分"
+  },
+  "buttonCancelTranslation": {
+    "message": "取消翻译"
+  },
+  "buttonShowOriginal": {
+    "message": "显示原文"
+  },
+  "buttonShowTranslation": {
+    "message": "显示译文"
+  },
+  "statusPreparing": {
+    "message": "正在准备…"
+  },
+  "statusReady": {
+    "message": "准备就绪。"
+  },
+  "headingCacheManagement": {
+    "message": "缓存管理"
+  },
+  "cacheSummaryChecking": {
+    "message": "正在检查已保存的翻译缓存…"
+  },
+  "buttonClearAllCaches": {
+    "message": "删除全部翻译缓存"
+  },
+  "footerShortcut": {
+    "message": "按 Ctrl + Shift + . 可切换侧边栏。"
+  },
+  "profileDefault": {
+    "message": "$LANGUAGE$ · 标准设置",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "unknown": {
+    "message": "未知"
+  },
+  "styleShortNatural": {
+    "message": "自然"
+  },
+  "styleShortFaithful": {
+    "message": "忠实"
+  },
+  "styleShortConcise": {
+    "message": "简洁"
+  },
+  "styleShortStandard": {
+    "message": "标准"
+  },
+  "profileLabel": {
+    "message": "$LANGUAGE$ · $STYLE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      },
+      "style": {
+        "content": "$2"
+      }
+    }
+  },
+  "pagePartiallyTranslated": {
+    "message": "部分已翻译（缓存 $COUNT$ 项）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslateNewText": {
+    "message": "将新添加的文本翻译为 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingTranslation": {
+    "message": "正在显示译文（$COUNT$ 项）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingOriginal": {
+    "message": "正在显示原文（已缓存 $COUNT$ 项翻译）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageMixed": {
+    "message": "原文和译文混合（缓存 $COUNT$ 项）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslatePendingTo": {
+    "message": "将未翻译部分翻译为 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageOriginal": {
+    "message": "原文"
+  },
+  "buttonTranslatePageTo": {
+    "message": "将此页面翻译为 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsNodesChars": {
+    "message": "$NODES$ 项 / 约 $CHARS$ 个字符",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "countEntries": {
+    "message": "$COUNT$ 项",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "none": {
+    "message": "无"
+  },
+  "errorNoActiveTab": {
+    "message": "无法获取当前活动标签页。"
+  },
+  "errorContentScriptStart": {
+    "message": "无法启动页面内容脚本。"
+  },
+  "errorPageOperation": {
+    "message": "页面操作失败。"
+  },
+  "errorTranslationsArrayMissing": {
+    "message": "AI 响应中没有 translations 数组。"
+  },
+  "errorTranslationsMissing": {
+    "message": "AI 响应缺少 $COUNT$ 项翻译。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOpenAIConsent": {
+    "message": "OpenAI 模式需要获得权限，才能将待翻译的页面文本发送到 OpenAI API。"
+  },
+  "errorOpenAIKeyRequired": {
+    "message": "请输入 OpenAI API 密钥。"
+  },
+  "errorOpenAIModelRequired": {
+    "message": "请输入 OpenAI 模型名称。"
+  },
+  "errorOpenAIResultMissing": {
+    "message": "无法从 OpenAI API 获取翻译结果。"
+  },
+  "errorOpenAIJson": {
+    "message": "无法将 OpenAI 翻译结果解析为 JSON。"
+  },
+  "ollamaConnectionTestHttp": {
+    "message": "Ollama 连接测试：HTTP $STATUS$ $TEXT$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorOllamaConnectionJson": {
+    "message": "Ollama 连接测试：无法解析 JSON 响应。"
+  },
+  "ollamaModelNotFound": {
+    "message": "未找到模型"
+  },
+  "ollamaConnectedNoModels": {
+    "message": "已连接到 Ollama，但未找到模型。"
+  },
+  "ollamaConnectedModels": {
+    "message": "Ollama 连接成功。检测到 $COUNT$ 个模型。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ollamaModelFetchError": {
+    "message": "Ollama 模型错误：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOllamaModelRequired": {
+    "message": "请选择 Ollama 模型。"
+  },
+  "errorOllamaResultMissing": {
+    "message": "无法从 Ollama 获取翻译结果。"
+  },
+  "errorOllamaJson": {
+    "message": "无法将 Ollama 翻译结果解析为 JSON。"
+  },
+  "errorHostPermission": {
+    "message": "此扩展无权访问该网站。请在 Firefox 设置中允许此扩展访问网站。"
+  },
+  "errorProtectedPage": {
+    "message": "此页面受 Firefox 保护，无法翻译。请在普通的 http/https 网页上尝试。"
+  },
+  "errorOllamaNetwork": {
+    "message": "无法与 Ollama API 通信。请确认 Ollama 正在运行。"
+  },
+  "errorOllamaForbidden": {
+    "message": "Ollama 拒绝了来自 Firefox 扩展的连接。在 Windows 上，请设置 OLLAMA_ORIGINS=moz-extension://*，然后完全退出并重新启动 Ollama。"
+  },
+  "errorPageDisconnected": {
+    "message": "与页面的连接已中断。请确认标签页是否被刷新或跳转。"
+  },
+  "errorGeneric": {
+    "message": "错误：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageUnsupported": {
+    "message": "不支持 / 未检查"
+  },
+  "dateUnknown": {
+    "message": "日期时间未知"
+  },
+  "cacheSummarySaved": {
+    "message": "已保存 $COUNT$ 个页面/翻译设置缓存",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cacheSummaryEmpty": {
+    "message": "没有已保存的翻译缓存。"
+  },
+  "cacheItemMeta": {
+    "message": "$PROFILE$ / $COUNT$ 项 / $DATE$",
+    "placeholders": {
+      "profile": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      },
+      "date": {
+        "content": "$3"
+      }
+    }
+  },
+  "buttonDeleteThisCache": {
+    "message": "删除此缓存"
+  },
+  "cacheDeletedSelected": {
+    "message": "已删除所选缓存。"
+  },
+  "cacheListError": {
+    "message": "无法加载缓存列表：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmClearAllCaches": {
+    "message": "要删除 Page AI Translator 的全部已保存翻译缓存吗？\n\n翻译引擎和翻译规则等设置将被保留。"
+  },
+  "cacheAllDeleted": {
+    "message": "已删除全部已保存翻译缓存。当前打开标签页中的临时缓存会保留到关闭标签页为止。"
+  },
+  "selectionStats": {
+    "message": "$NODES$ 项 / 约 $CHARS$ 个字符",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "selectionNone": {
+    "message": "未选择"
+  },
+  "selectionPrompt": {
+    "message": "请在网页上选择要翻译的文本，然后再次点击按钮。"
+  },
+  "errorSelectionTooLong": {
+    "message": "选中文本约有 $CURRENT$ 个字符，超过 $MAX$ 个字符的上限。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressSelectionAI": {
+    "message": "正在用 AI 翻译选中文本"
+  },
+  "messageSelectionAIBatch": {
+    "message": "正在用 AI 翻译选中文本… 批次 $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorSelectionBatch": {
+    "message": "选中文本批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressSelection": {
+    "message": "正在翻译选中文本"
+  },
+  "selectionCancelled": {
+    "message": "已取消选中文本翻译。页面未发生更改。"
+  },
+  "selectionComplete": {
+    "message": "选中文本翻译完成：已替换 $COUNT$ 项。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressGettingText": {
+    "message": "正在获取页面文本"
+  },
+  "messageGettingText": {
+    "message": "正在从页面获取文本…"
+  },
+  "noUntranslatedText": {
+    "message": "没有未翻译的文本。"
+  },
+  "errorPageTooLong": {
+    "message": "此页面约有 $CURRENT$ 个字符，超过 $MAX$ 个字符的上限。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressAI": {
+    "message": "正在用 AI 翻译"
+  },
+  "messageAIBatch": {
+    "message": "正在用 AI 翻译… 批次 $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorBatch": {
+    "message": "批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressApplying": {
+    "message": "正在应用到页面"
+  },
+  "errorApplyBatch": {
+    "message": "应用批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressTranslating": {
+    "message": "正在翻译"
+  },
+  "translationCancelled": {
+    "message": "已取消翻译。已应用的 $COUNT$ 项仍保持翻译状态。可使用“显示原文”查看原文。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "translationComplete": {
+    "message": "翻译完成：已翻译 $COUNT$ 项。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressCancelling": {
+    "message": "正在取消…"
+  },
+  "messageCancelling": {
+    "message": "正在取消当前 AI 请求…"
+  },
+  "messageSwitchingOriginal": {
+    "message": "正在切换到原文…"
+  },
+  "messageOriginalShown": {
+    "message": "已显示原文。翻译缓存已保留。"
+  },
+  "messageSwitchingTranslation": {
+    "message": "正在切换到译文…"
+  },
+  "messageTranslationShown": {
+    "message": "已显示保存的译文。未发起 AI 请求。"
+  },
+  "messageDeletingCurrentCache": {
+    "message": "正在删除当前设置的已保存缓存…"
+  },
+  "messageCurrentCacheDeleted": {
+    "message": "已删除当前翻译设置对应的已保存缓存。此标签页中的临时缓存会保留到关闭标签页为止。"
+  },
+  "messageNewTextDetected": {
+    "message": "检测到 $COUNT$ 项新文本。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "initializationError": {
+    "message": "初始化错误：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  }
+}

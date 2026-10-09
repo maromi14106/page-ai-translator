@@ -1,0 +1,606 @@
+{
+  "extensionName": {
+    "message": "Page AI Translator"
+  },
+  "extensionDescription": {
+    "message": "Traduisez des pages web depuis la barre latérale de Firefox avec l’API OpenAI ou Ollama, la traduction du texte sélectionné, plusieurs langues, des règles de traduction et un cache persistant."
+  },
+  "actionTitle": {
+    "message": "Ouvrir Page AI Translator"
+  },
+  "commandToggleSidebar": {
+    "message": "Afficher ou masquer la barre latérale Page AI Translator"
+  },
+  "labelEngine": {
+    "message": "Moteur de traduction"
+  },
+  "engineOllama": {
+    "message": "Ollama (local)"
+  },
+  "labelOpenAIModel": {
+    "message": "Modèle OpenAI"
+  },
+  "labelApiKey": {
+    "message": "Clé API"
+  },
+  "hintApiKeyNotStored": {
+    "message": "La clé API n’est pas enregistrée."
+  },
+  "hintOpenAIPrivacy": {
+    "message": "En mode OpenAI, le texte de la page à traduire est envoyé à api.openai.com. Firefox demande l’autorisation avant la première utilisation."
+  },
+  "labelOllamaModel": {
+    "message": "Modèle Ollama"
+  },
+  "buttonRefreshList": {
+    "message": "Actualiser la liste"
+  },
+  "ollamaModelPrompt": {
+    "message": "Chargez d’abord la liste des modèles"
+  },
+  "hintOllamaPrivacy": {
+    "message": "En mode Ollama, le texte à traduire est envoyé à votre instance Ollama locale."
+  },
+  "headingTranslationRules": {
+    "message": "Règles de traduction"
+  },
+  "labelTargetLanguage": {
+    "message": "Langue cible"
+  },
+  "labelTranslationStyle": {
+    "message": "Style de traduction"
+  },
+  "styleNatural": {
+    "message": "Naturel et fluide"
+  },
+  "styleFaithful": {
+    "message": "Fidèle au texte source"
+  },
+  "styleConcise": {
+    "message": "Concis"
+  },
+  "labelTerminology": {
+    "message": "Terminologie"
+  },
+  "terminologyBalanced": {
+    "message": "Privilégier une formulation naturelle dans la langue cible"
+  },
+  "terminologyPreserve": {
+    "message": "Conserver les termes source pour la terminologie technique courante"
+  },
+  "terminologyTranslate": {
+    "message": "Traduire la terminologie lorsque c’est approprié"
+  },
+  "labelCustomInstructions": {
+    "message": "Règles supplémentaires (facultatif)"
+  },
+  "placeholderCustomInstructions": {
+    "message": "Exemple : conserver les noms de compétences du jeu en anglais"
+  },
+  "hintRulesApply": {
+    "message": "Ces paramètres s’appliquent à la traduction de la page entière et du texte sélectionné."
+  },
+  "labelPageState": {
+    "message": "État de la page"
+  },
+  "statusChecking": {
+    "message": "Vérification…"
+  },
+  "labelUntranslated": {
+    "message": "Non traduit"
+  },
+  "labelSavedCache": {
+    "message": "Cache enregistré"
+  },
+  "buttonClearCurrentCache": {
+    "message": "Supprimer le cache des paramètres actuels"
+  },
+  "headingSelectionTranslation": {
+    "message": "Traduction du texte sélectionné"
+  },
+  "hintSelectionTranslation": {
+    "message": "Sélectionnez du texte sur la page web, puis appuyez sur le bouton. Seul le texte sélectionné sera traduit dans la page."
+  },
+  "labelSelection": {
+    "message": "Sélection"
+  },
+  "statusUnchecked": {
+    "message": "Non vérifié"
+  },
+  "buttonTranslateSelection": {
+    "message": "Traduire la sélection"
+  },
+  "buttonTranslateUntranslated": {
+    "message": "Traduire le texte non traduit"
+  },
+  "buttonCancelTranslation": {
+    "message": "Annuler la traduction"
+  },
+  "buttonShowOriginal": {
+    "message": "Afficher l’original"
+  },
+  "buttonShowTranslation": {
+    "message": "Afficher la traduction"
+  },
+  "statusPreparing": {
+    "message": "Préparation…"
+  },
+  "statusReady": {
+    "message": "Prêt."
+  },
+  "headingCacheManagement": {
+    "message": "Gestion du cache"
+  },
+  "cacheSummaryChecking": {
+    "message": "Vérification des caches de traduction enregistrés…"
+  },
+  "buttonClearAllCaches": {
+    "message": "Supprimer tous les caches de traduction"
+  },
+  "footerShortcut": {
+    "message": "Appuyez sur Ctrl + Shift + . pour afficher ou masquer la barre latérale."
+  },
+  "profileDefault": {
+    "message": "$LANGUAGE$ · Paramètres standard",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "unknown": {
+    "message": "Inconnu"
+  },
+  "styleShortNatural": {
+    "message": "Naturel"
+  },
+  "styleShortFaithful": {
+    "message": "Fidèle"
+  },
+  "styleShortConcise": {
+    "message": "Concis"
+  },
+  "styleShortStandard": {
+    "message": "Standard"
+  },
+  "profileLabel": {
+    "message": "$LANGUAGE$ · $STYLE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      },
+      "style": {
+        "content": "$2"
+      }
+    }
+  },
+  "pagePartiallyTranslated": {
+    "message": "Partiellement traduit ($COUNT$ en cache)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslateNewText": {
+    "message": "Traduire le nouveau texte en $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingTranslation": {
+    "message": "Traduction affichée ($COUNT$ éléments)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingOriginal": {
+    "message": "Original affiché ($COUNT$ traductions en cache)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageMixed": {
+    "message": "Original et traduction mélangés ($COUNT$ en cache)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslatePendingTo": {
+    "message": "Traduire le texte non traduit en $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageOriginal": {
+    "message": "Original"
+  },
+  "buttonTranslatePageTo": {
+    "message": "Traduire cette page en $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsNodesChars": {
+    "message": "$NODES$ éléments / env. $CHARS$ caractères",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "countEntries": {
+    "message": "$COUNT$ entrées",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "none": {
+    "message": "Aucun"
+  },
+  "errorNoActiveTab": {
+    "message": "Impossible d’obtenir l’onglet actif."
+  },
+  "errorContentScriptStart": {
+    "message": "Impossible de démarrer le script de contenu de la page."
+  },
+  "errorPageOperation": {
+    "message": "L’opération sur la page a échoué."
+  },
+  "errorTranslationsArrayMissing": {
+    "message": "La réponse de l’IA ne contient pas de tableau translations."
+  },
+  "errorTranslationsMissing": {
+    "message": "Il manque $COUNT$ traduction(s) dans la réponse de l’IA.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOpenAIConsent": {
+    "message": "Le mode OpenAI nécessite l’autorisation d’envoyer le texte à traduire à l’API OpenAI."
+  },
+  "errorOpenAIKeyRequired": {
+    "message": "Saisissez une clé API OpenAI."
+  },
+  "errorOpenAIModelRequired": {
+    "message": "Saisissez un nom de modèle OpenAI."
+  },
+  "errorOpenAIResultMissing": {
+    "message": "Impossible d’obtenir un résultat de traduction depuis l’API OpenAI."
+  },
+  "errorOpenAIJson": {
+    "message": "Impossible d’analyser le résultat de traduction OpenAI en JSON."
+  },
+  "ollamaConnectionTestHttp": {
+    "message": "Test de connexion Ollama : HTTP $STATUS$ $TEXT$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorOllamaConnectionJson": {
+    "message": "Test de connexion Ollama : impossible d’analyser la réponse JSON."
+  },
+  "ollamaModelNotFound": {
+    "message": "Aucun modèle trouvé"
+  },
+  "ollamaConnectedNoModels": {
+    "message": "Connexion à Ollama réussie, mais aucun modèle n’a été trouvé."
+  },
+  "ollamaConnectedModels": {
+    "message": "Connexion à Ollama réussie. $COUNT$ modèle(s) détecté(s).",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ollamaModelFetchError": {
+    "message": "Erreur de modèle Ollama : $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOllamaModelRequired": {
+    "message": "Sélectionnez un modèle Ollama."
+  },
+  "errorOllamaResultMissing": {
+    "message": "Impossible d’obtenir un résultat de traduction depuis Ollama."
+  },
+  "errorOllamaJson": {
+    "message": "Impossible d’analyser le résultat de traduction Ollama en JSON."
+  },
+  "errorHostPermission": {
+    "message": "Cette extension n’a pas accès à ce site. Autorisez l’accès au site dans les paramètres de Firefox."
+  },
+  "errorProtectedPage": {
+    "message": "Cette page est protégée par Firefox et ne peut pas être traduite. Essayez sur une page web http/https classique."
+  },
+  "errorOllamaNetwork": {
+    "message": "Impossible de communiquer avec l’API Ollama. Vérifiez qu’Ollama est en cours d’exécution."
+  },
+  "errorOllamaForbidden": {
+    "message": "Ollama a refusé la connexion de l’extension Firefox. Sous Windows, définissez OLLAMA_ORIGINS=moz-extension://* puis quittez complètement Ollama et redémarrez-le."
+  },
+  "errorPageDisconnected": {
+    "message": "La connexion à la page a été interrompue. Vérifiez si l’onglet a été rechargé ou a changé de page."
+  },
+  "errorGeneric": {
+    "message": "Erreur : $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageUnsupported": {
+    "message": "Non pris en charge / non vérifié"
+  },
+  "dateUnknown": {
+    "message": "Date inconnue"
+  },
+  "cacheSummarySaved": {
+    "message": "$COUNT$ cache(s) de page/profil enregistré(s)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cacheSummaryEmpty": {
+    "message": "Aucun cache de traduction enregistré."
+  },
+  "cacheItemMeta": {
+    "message": "$PROFILE$ / $COUNT$ entrées / $DATE$",
+    "placeholders": {
+      "profile": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      },
+      "date": {
+        "content": "$3"
+      }
+    }
+  },
+  "buttonDeleteThisCache": {
+    "message": "Supprimer ce cache"
+  },
+  "cacheDeletedSelected": {
+    "message": "Le cache sélectionné a été supprimé."
+  },
+  "cacheListError": {
+    "message": "Impossible de charger la liste des caches : $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmClearAllCaches": {
+    "message": "Supprimer tous les caches de traduction enregistrés de Page AI Translator ?\n\nLes paramètres du moteur et des règles de traduction seront conservés."
+  },
+  "cacheAllDeleted": {
+    "message": "Tous les caches de traduction enregistrés ont été supprimés. Le cache temporaire de l’onglet actuellement ouvert reste disponible jusqu’à sa fermeture."
+  },
+  "selectionStats": {
+    "message": "$NODES$ éléments / env. $CHARS$ caractères",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "selectionNone": {
+    "message": "Aucune sélection"
+  },
+  "selectionPrompt": {
+    "message": "Sélectionnez le texte à traduire sur la page web, puis appuyez de nouveau sur le bouton."
+  },
+  "errorSelectionTooLong": {
+    "message": "La sélection contient environ $CURRENT$ caractères. La limite est de $MAX$ caractères.",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressSelectionAI": {
+    "message": "Traduction de la sélection avec l’IA"
+  },
+  "messageSelectionAIBatch": {
+    "message": "Traduction de la sélection avec l’IA… Lot $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorSelectionBatch": {
+    "message": "Lot de sélection $CURRENT$/$TOTAL$ : $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressSelection": {
+    "message": "Traduction de la sélection"
+  },
+  "selectionCancelled": {
+    "message": "La traduction de la sélection a été annulée. Aucune modification n’a été appliquée à la page."
+  },
+  "selectionComplete": {
+    "message": "Traduction de la sélection terminée : $COUNT$ élément(s) remplacé(s).",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressGettingText": {
+    "message": "Récupération du texte de la page"
+  },
+  "messageGettingText": {
+    "message": "Récupération du texte de la page…"
+  },
+  "noUntranslatedText": {
+    "message": "Il n’y a aucun texte non traduit."
+  },
+  "errorPageTooLong": {
+    "message": "Cette page contient environ $CURRENT$ caractères. La limite est de $MAX$ caractères.",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressAI": {
+    "message": "Traduction avec l’IA"
+  },
+  "messageAIBatch": {
+    "message": "Traduction avec l’IA… Lot $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorBatch": {
+    "message": "Lot $CURRENT$/$TOTAL$ : $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressApplying": {
+    "message": "Application à la page"
+  },
+  "errorApplyBatch": {
+    "message": "Application du lot $CURRENT$/$TOTAL$ : $ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressTranslating": {
+    "message": "Traduction en cours"
+  },
+  "translationCancelled": {
+    "message": "La traduction a été annulée. Les $COUNT$ élément(s) déjà appliqué(s) restent traduits. Utilisez « Afficher l’original » pour voir le texte source.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "translationComplete": {
+    "message": "Traduction terminée : $COUNT$ élément(s) traduit(s).",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressCancelling": {
+    "message": "Annulation…"
+  },
+  "messageCancelling": {
+    "message": "Annulation de la requête IA en cours…"
+  },
+  "messageSwitchingOriginal": {
+    "message": "Passage au texte original…"
+  },
+  "messageOriginalShown": {
+    "message": "Le texte original est affiché. Le cache de traduction a été conservé."
+  },
+  "messageSwitchingTranslation": {
+    "message": "Passage au texte traduit…"
+  },
+  "messageTranslationShown": {
+    "message": "La traduction enregistrée est affichée. Aucune requête IA n’a été effectuée."
+  },
+  "messageDeletingCurrentCache": {
+    "message": "Suppression du cache des paramètres actuels…"
+  },
+  "messageCurrentCacheDeleted": {
+    "message": "Le cache enregistré pour les paramètres de traduction actuels a été supprimé. Le cache temporaire de cet onglet reste disponible jusqu’à sa fermeture."
+  },
+  "messageNewTextDetected": {
+    "message": "$COUNT$ nouvel/nouveaux élément(s) de texte détecté(s).",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "initializationError": {
+    "message": "Erreur d’initialisation : $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  }
+}

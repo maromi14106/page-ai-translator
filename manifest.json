@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Page AI Translator",
-  "version": "1.0.0",
-  "description": "FirefoxサイドバーからWebページをAI翻訳。OpenAI API / Ollama、選択範囲翻訳、多言語、翻訳ルール、永続キャッシュに対応。",
+  "name": "__MSG_extensionName__",
+  "version": "1.1.0",
+  "description": "__MSG_extensionDescription__",
   "permissions": [
     "scripting",
     "storage"
@@ -16,7 +16,7 @@
     "96": "icons/icon-96.png"
   },
   "action": {
-    "default_title": "Page AI Translator を開く",
+    "default_title": "__MSG_actionTitle__",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png"
@@ -40,7 +40,7 @@
     "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.openai.com http://127.0.0.1:11434 http://localhost:11434;"
   },
   "sidebar_action": {
-    "default_title": "Page AI Translator",
+    "default_title": "__MSG_extensionName__",
     "default_panel": "sidebar.html",
     "default_icon": {
       "16": "icons/icon-16.png",
@@ -70,7 +70,8 @@
       "suggested_key": {
         "default": "Ctrl+Shift+Period"
       },
-      "description": "Page AI Translator サイドバーを開閉"
+      "description": "__MSG_commandToggleSidebar__"
     }
-  }
+  },
+  "default_locale": "ja"
 }

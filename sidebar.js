@@ -10,14 +10,39 @@ const CACHE_PREFIXES = [
 
 const TARGET_LANGUAGES = {
   "ja": { name: "Japanese", label: "日本語" },
-  "en": { name: "English", label: "英語" },
-  "ko": { name: "Korean", label: "韓国語" },
-  "zh-CN": { name: "Simplified Chinese", label: "中国語（簡体字）" },
-  "zh-TW": { name: "Traditional Chinese", label: "中国語（繁体字）" },
-  "fr": { name: "French", label: "フランス語" },
-  "de": { name: "German", label: "ドイツ語" },
-  "es": { name: "Spanish", label: "スペイン語" }
+  "en": { name: "English", label: "English" },
+  "ko": { name: "Korean", label: "한국어" },
+  "zh-CN": { name: "Simplified Chinese", label: "简体中文" },
+  "zh-TW": { name: "Traditional Chinese", label: "繁體中文" },
+  "fr": { name: "French", label: "Français" },
+  "de": { name: "German", label: "Deutsch" },
+  "es": { name: "Spanish", label: "Español" }
 };
+
+const UI_LOCALE = browser.i18n.getUILanguage();
+
+function msg(key, substitutions) {
+  return browser.i18n.getMessage(key, substitutions) || key;
+}
+
+function applyStaticI18n() {
+  document.documentElement.lang =
+    UI_LOCALE.toLowerCase().startsWith("ja") ? "ja" : "en";
+  document.title = msg("extensionName");
+
+  for (const element of document.querySelectorAll("[data-i18n]")) {
+    element.textContent = msg(element.dataset.i18n);
+  }
+
+  for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
+    element.setAttribute(
+      "placeholder",
+      msg(element.dataset.i18nPlaceholder)
+    );
+  }
+}
+
+applyStaticI18n();
 
 const engine = document.getElementById("engine");
 const openaiSettings = document.getElementById("openaiSettings");
@@ -96,27 +121,27 @@ function getCacheProfileMeta() {
 
 function profileLabel(meta) {
   if (!meta) {
-    return "日本語・標準設定";
+    return msg("profileDefault", TARGET_LANGUAGES.ja.label);
   }
 
   const language =
-    meta.targetLanguageLabel ??
     TARGET_LANGUAGES[meta.targetLanguage]?.label ??
+    meta.targetLanguageLabel ??
     meta.targetLanguage ??
-    "不明";
+    msg("unknown");
 
   const styleLabels = {
-    natural: "自然",
-    faithful: "忠実",
-    concise: "簡潔"
+    natural: msg("styleShortNatural"),
+    faithful: msg("styleShortFaithful"),
+    concise: msg("styleShortConcise")
   };
 
   const style =
     styleLabels[meta.translationStyle] ??
     meta.translationStyle ??
-    "標準";
+    msg("styleShortStandard");
 
-  return `${language}・${style}`;
+  return msg("profileLabel", [language, style]);
 }
 
 function updatePageDisplay(state) {
@@ -128,35 +153,35 @@ function updatePageDisplay(state) {
 
   if (cachedCount > 0 && pendingNodeCount > 0) {
     pageState.textContent =
-      `一部翻訳済み（キャッシュ ${cachedCount}か所）`;
+      msg("pagePartiallyTranslated", String(cachedCount));
     translateButton.textContent =
-      `新しく追加された文章を${currentTargetLanguage().label}へ翻訳`;
+      msg("buttonTranslateNewText", currentTargetLanguage().label);
   } else if (cachedCount > 0) {
     pageState.textContent =
       displayMode === "translated"
-        ? `翻訳文を表示中（${cachedCount}か所）`
+        ? msg("pageShowingTranslation", String(cachedCount))
         : displayMode === "original"
-          ? `原文を表示中（翻訳キャッシュ ${cachedCount}か所）`
-          : `原文・訳文混在（キャッシュ ${cachedCount}か所）`;
+          ? msg("pageShowingOriginal", String(cachedCount))
+          : msg("pageMixed", String(cachedCount));
 
     translateButton.textContent =
-      `未翻訳部分を${currentTargetLanguage().label}へ翻訳`;
+      msg("buttonTranslatePendingTo", currentTargetLanguage().label);
   } else {
-    pageState.textContent = "原文";
+    pageState.textContent = msg("pageOriginal");
     translateButton.textContent =
-      `このページを${currentTargetLanguage().label}へ翻訳`;
+      msg("buttonTranslatePageTo", currentTargetLanguage().label);
   }
 
   pageStats.textContent =
-    `${pendingNodeCount}か所 / 約${pendingCharacterCount.toLocaleString()}文字`;
+    msg("statsNodesChars", [String(pendingNodeCount), pendingCharacterCount.toLocaleString(UI_LOCALE)]);
 
   const persistentPairCount =
     state?.persistentPairCount ?? 0;
 
   cacheState.textContent =
     persistentPairCount > 0
-      ? `${persistentPairCount}件`
-      : "なし";
+      ? msg("countEntries", String(persistentPairCount))
+      : msg("none");
 
   clearCacheButton.disabled =
     isTranslating || persistentPairCount === 0;
@@ -306,7 +331,7 @@ async function getActiveTab() {
   });
 
   if (!tabs.length || !tabs[0].id) {
-    throw new Error("アクティブなタブを取得できませんでした。");
+    throw new Error(msg("errorNoActiveTab"));
   }
 
   return tabs[0];
@@ -348,7 +373,7 @@ async function ensureContentScript(tabId) {
   });
 
   if (!ping?.ok) {
-    throw new Error("ページ側スクリプトを起動できませんでした。");
+    throw new Error(msg("errorContentScriptStart"));
   }
 }
 
@@ -364,7 +389,7 @@ async function sendToTab(tabId, type, payload = {}) {
     });
 
     if (!response?.ok) {
-      throw new Error(response?.error || "ページ操作に失敗しました。");
+      throw new Error(response?.error || msg("errorPageOperation"));
     }
 
     return response;
@@ -383,7 +408,7 @@ async function sendToTab(tabId, type, payload = {}) {
     });
 
     if (!response?.ok) {
-      throw new Error(response?.error || "ページ操作に失敗しました。");
+      throw new Error(response?.error || msg("errorPageOperation"));
     }
 
     return response;
@@ -487,7 +512,7 @@ function translationSchema() {
 
 function validateTranslations(items, translations) {
   if (!Array.isArray(translations)) {
-    throw new Error("AIの応答にtranslations配列がありません。");
+    throw new Error(msg("errorTranslationsArrayMissing"));
   }
 
   const expectedIds = new Set(items.map((item) => String(item.id)));
@@ -507,7 +532,7 @@ function validateTranslations(items, translations) {
   );
 
   if (missing.length) {
-    throw new Error(`AIの応答が不足しています（${missing.length}件）。`);
+    throw new Error(msg("errorTranslationsMissing", String(missing.length)));
   }
 
   return items.map((item) => ({
@@ -551,7 +576,7 @@ async function ensureOpenAIWebsiteContentConsent() {
 
   if (!granted) {
     throw new Error(
-      "OpenAIモードには、翻訳対象のページ本文をOpenAI APIへ送信する許可が必要です。"
+      msg("errorOpenAIConsent")
     );
   }
 }
@@ -561,11 +586,11 @@ async function translateWithOpenAI(items) {
   const model = openaiModel.value.trim();
 
   if (!apiKey) {
-    throw new Error("OpenAI APIキーを入力してください。");
+    throw new Error(msg("errorOpenAIKeyRequired"));
   }
 
   if (!model) {
-    throw new Error("OpenAIモデル名を入力してください。");
+    throw new Error(msg("errorOpenAIModelRequired"));
   }
 
   const controller = newAbortController();
@@ -612,14 +637,14 @@ async function translateWithOpenAI(items) {
   const outputText = extractOpenAIOutputText(data);
 
   if (!outputText) {
-    throw new Error("OpenAI APIから翻訳結果を取得できませんでした。");
+    throw new Error(msg("errorOpenAIResultMissing"));
   }
 
   let parsed;
   try {
     parsed = JSON.parse(outputText);
   } catch {
-    throw new Error("OpenAI APIの翻訳結果をJSONとして解析できませんでした。");
+    throw new Error(msg("errorOpenAIJson"));
   }
 
   return validateTranslations(items, parsed.translations);
@@ -643,7 +668,7 @@ async function fetchOllamaModels() {
 
   if (!response.ok) {
     throw new Error(
-      `Ollama接続テスト: HTTP ${response.status} ${response.statusText}`
+      msg("ollamaConnectionTestHttp", [String(response.status), response.statusText])
     );
   }
 
@@ -651,7 +676,7 @@ async function fetchOllamaModels() {
   try {
     data = JSON.parse(text);
   } catch {
-    throw new Error("Ollama接続テスト: JSON応答を解析できませんでした。");
+    throw new Error(msg("errorOllamaConnectionJson"));
   }
 
   return Array.isArray(data?.models)
@@ -673,9 +698,9 @@ async function refreshOllamaModels(preferred = "") {
     if (!models.length) {
       const option = document.createElement("option");
       option.value = "";
-      option.textContent = "モデルが見つかりません";
+      option.textContent = msg("ollamaModelNotFound");
       ollamaModel.appendChild(option);
-      showMessage("Ollamaへ接続できましたが、モデルがありません。");
+      showMessage(msg("ollamaConnectedNoModels"));
       return;
     }
 
@@ -694,12 +719,12 @@ async function refreshOllamaModels(preferred = "") {
 
     await saveSettings();
     showMessage(
-      `Ollama接続OK。${models.length}個のモデルを検出しました。`
+      msg("ollamaConnectedModels", String(models.length))
     );
   } catch (error) {
     if (error?.name !== "AbortError") {
       showMessage(
-        `Ollamaモデル取得エラー: ${error?.message || String(error)}`
+        msg("ollamaModelFetchError", error?.message || String(error))
       );
     }
   } finally {
@@ -712,7 +737,7 @@ async function translateWithOllama(items) {
   const model = ollamaModel.value;
 
   if (!model) {
-    throw new Error("Ollamaモデルを選択してください。");
+    throw new Error(msg("errorOllamaModelRequired"));
   }
 
   const controller = newAbortController();
@@ -763,14 +788,14 @@ async function translateWithOllama(items) {
   const content = data?.message?.content;
 
   if (typeof content !== "string" || !content.trim()) {
-    throw new Error("Ollamaから翻訳結果を取得できませんでした。");
+    throw new Error(msg("errorOllamaResultMissing"));
   }
 
   let parsed;
   try {
     parsed = JSON.parse(content);
   } catch {
-    throw new Error("Ollamaの翻訳結果をJSONとして解析できませんでした。");
+    throw new Error(msg("errorOllamaJson"));
   }
 
   return validateTranslations(items, parsed.translations);
@@ -792,14 +817,21 @@ function friendlyError(error) {
   const raw = error?.message || String(error);
 
   if (raw.includes("Missing host permission")) {
-    return "このサイトへのアクセス権限がありません。Firefoxの拡張機能設定で、この拡張機能のサイトアクセスを許可してください。";
+    return msg("errorHostPermission");
   }
 
   if (
     raw.includes("Cannot access") ||
     raw.includes("restricted")
   ) {
-    return "このページはFirefoxの保護対象のため翻訳できません。通常のhttp/https Webページで試してください。";
+    return msg("errorProtectedPage");
+  }
+
+  if (
+    engine.value === "ollama" &&
+    (raw.includes("Ollama: 403") || raw.includes("HTTP 403"))
+  ) {
+    return msg("errorOllamaForbidden");
   }
 
   if (
@@ -807,15 +839,15 @@ function friendlyError(error) {
     raw.includes("Failed to fetch")
   ) {
     return engine.value === "ollama"
-      ? "Ollama APIとの通信に失敗しました。Ollamaの状態を確認してください。"
-      : `エラー: ${raw}`;
+      ? msg("errorOllamaNetwork")
+      : msg("errorGeneric", raw);
   }
 
   if (isMissingReceiverError(error)) {
-    return "ページとの接続が途中で切れました。タブの再読み込み・移動がなかったか確認してください。";
+    return msg("errorPageDisconnected");
   }
 
-  return `エラー: ${raw}`;
+  return msg("errorGeneric", raw);
 }
 
 async function updatePageState() {
@@ -832,7 +864,7 @@ async function updatePageState() {
 
     updatePageDisplay(response);
   } catch (error) {
-    pageState.textContent = "対象外 / 未確認";
+    pageState.textContent = msg("pageUnsupported");
   }
 }
 
@@ -840,10 +872,10 @@ function formatCacheDate(timestamp) {
   const value = Number(timestamp);
 
   if (!Number.isFinite(value) || value <= 0) {
-    return "日時不明";
+    return msg("dateUnknown");
   }
 
-  return new Date(value).toLocaleString();
+  return new Date(value).toLocaleString(UI_LOCALE);
 }
 
 async function readCacheIndex() {
@@ -883,8 +915,8 @@ async function refreshCacheList() {
     cacheList.innerHTML = "";
     cacheSummary.textContent =
       index.length > 0
-        ? `${index.length}件のページ / 翻訳設定キャッシュを保存中`
-        : "保存済み翻訳キャッシュはありません。";
+        ? msg("cacheSummarySaved", String(index.length))
+        : msg("cacheSummaryEmpty");
 
     clearAllCachesButton.disabled =
       isTranslating || index.length === 0;
@@ -900,10 +932,11 @@ async function refreshCacheList() {
 
       const meta = document.createElement("div");
       meta.className = "cache-item-meta";
-      meta.textContent =
-        `${profileLabel(item.profileMeta)} / ` +
-        `${Number(item.pairCount ?? 0).toLocaleString()}件 / ` +
-        `${formatCacheDate(item.updatedAt)}`;
+      meta.textContent = msg("cacheItemMeta", [
+        profileLabel(item.profileMeta),
+        Number(item.pairCount ?? 0).toLocaleString(UI_LOCALE),
+        formatCacheDate(item.updatedAt)
+      ]);
       wrapper.appendChild(meta);
 
       const actions = document.createElement("div");
@@ -912,7 +945,7 @@ async function refreshCacheList() {
       const removeButton = document.createElement("button");
       removeButton.type = "button";
       removeButton.className = "ghost";
-      removeButton.textContent = "このキャッシュを削除";
+      removeButton.textContent = msg("buttonDeleteThisCache");
 
       removeButton.addEventListener("click", async () => {
         removeButton.disabled = true;
@@ -931,7 +964,7 @@ async function refreshCacheList() {
           await refreshCacheList();
 
           showMessage(
-            "選択した保存キャッシュを削除しました。"
+            msg("cacheDeletedSelected")
           );
         } catch (error) {
           showMessage(friendlyError(error));
@@ -944,7 +977,7 @@ async function refreshCacheList() {
     }
   } catch (error) {
     cacheSummary.textContent =
-      `キャッシュ一覧の取得に失敗しました: ${error?.message || String(error)}`;
+      msg("cacheListError", error?.message || String(error));
   } finally {
     refreshCacheListButton.disabled = isTranslating;
   }
@@ -977,7 +1010,7 @@ refreshCacheListButton.addEventListener("click", () => {
 clearAllCachesButton.addEventListener("click", async () => {
   if (
     !confirm(
-      "Page AI Translator の保存済み翻訳キャッシュをすべて削除しますか？\n\n翻訳エンジンや翻訳ルールなどの設定は残ります。"
+      msg("confirmClearAllCaches")
     )
   ) {
     return;
@@ -987,7 +1020,7 @@ clearAllCachesButton.addEventListener("click", async () => {
     clearAllCachesButton.disabled = true;
     await clearAllTranslationCaches();
     showMessage(
-      "保存済み翻訳キャッシュをすべて削除しました。現在開いているタブ内の一時キャッシュはタブを閉じるまで残ります。"
+      msg("cacheAllDeleted")
     );
   } catch (error) {
     showMessage(friendlyError(error));
@@ -1018,14 +1051,14 @@ translateSelectionButton.addEventListener("click", async () => {
       engine.value === "openai" &&
       !openaiKey.value.trim()
     ) {
-      throw new Error("OpenAI APIキーを入力してください。");
+      throw new Error(msg("errorOpenAIKeyRequired"));
     }
 
     if (
       engine.value === "ollama" &&
       !ollamaModel.value
     ) {
-      throw new Error("Ollamaモデルを選択してください。");
+      throw new Error(msg("errorOllamaModelRequired"));
     }
 
     if (engine.value === "openai") {
@@ -1044,20 +1077,22 @@ translateSelectionButton.addEventListener("click", async () => {
 
     selectionStats.textContent =
       selected.nodeCount > 0
-        ? `${selected.nodeCount}か所 / 約${selected.characterCount.toLocaleString()}文字`
-        : "選択なし";
+        ? msg("selectionStats", [String(selected.nodeCount), selected.characterCount.toLocaleString(UI_LOCALE)])
+        : msg("selectionNone");
 
     if (!selected.items.length) {
       showMessage(
-        "Webページ上で翻訳したい文章を選択してから、もう一度押してください。"
+        msg("selectionPrompt")
       );
       return;
     }
 
     if (selected.characterCount > MAX_SELECTION_CHARS) {
       throw new Error(
-        `選択範囲は約${selected.characterCount.toLocaleString()}文字あります。` +
-        `v1.0.0の上限${MAX_SELECTION_CHARS.toLocaleString()}文字を超えています。`
+        msg("errorSelectionTooLong", [
+        selected.characterCount.toLocaleString(UI_LOCALE),
+        MAX_SELECTION_CHARS.toLocaleString(UI_LOCALE)
+      ])
       );
     }
 
@@ -1071,13 +1106,13 @@ translateSelectionButton.addEventListener("click", async () => {
       if (cancelRequested) break;
 
       setProgress(
-        "選択範囲をAI翻訳中",
+        msg("progressSelectionAI"),
         index,
         batches.length
       );
 
       showMessage(
-        `選択範囲をAI翻訳中… バッチ ${index + 1}/${batches.length}`
+        msg("messageSelectionAIBatch", [String(index + 1), String(batches.length)])
       );
 
       let translations;
@@ -1095,15 +1130,18 @@ translateSelectionButton.addEventListener("click", async () => {
         }
 
         throw new Error(
-          `選択範囲 バッチ ${index + 1}/${batches.length}: ` +
-          `${error?.message || String(error)}`
+          msg("errorSelectionBatch", [
+          String(index + 1),
+          String(batches.length),
+          error?.message || String(error)
+        ])
         );
       }
 
       allTranslations.push(...translations);
 
       setProgress(
-        "選択範囲を翻訳中",
+        msg("progressSelection"),
         index + 1,
         batches.length
       );
@@ -1111,7 +1149,7 @@ translateSelectionButton.addEventListener("click", async () => {
 
     if (cancelRequested) {
       showMessage(
-        "選択範囲の翻訳をキャンセルしました。ページへの変更は行っていません。"
+        msg("selectionCancelled")
       );
       return;
     }
@@ -1125,7 +1163,7 @@ translateSelectionButton.addEventListener("click", async () => {
     await showTranslatedAfterTranslation(targetTabId);
 
     showMessage(
-      `選択範囲の翻訳完了: ${applied.changedCount}か所を置換しました。`
+      msg("selectionComplete", String(applied.changedCount))
     );
   } catch (error) {
     showMessage(friendlyError(error));
@@ -1149,14 +1187,14 @@ translateButton.addEventListener("click", async () => {
       engine.value === "openai" &&
       !openaiKey.value.trim()
     ) {
-      throw new Error("OpenAI APIキーを入力してください。");
+      throw new Error(msg("errorOpenAIKeyRequired"));
     }
 
     if (
       engine.value === "ollama" &&
       !ollamaModel.value
     ) {
-      throw new Error("Ollamaモデルを選択してください。");
+      throw new Error(msg("errorOllamaModelRequired"));
     }
 
     if (engine.value === "openai") {
@@ -1169,8 +1207,8 @@ translateButton.addEventListener("click", async () => {
     targetTabId = tab.id;
 
     setTranslating(true);
-    setProgress("文章を取得中", 0, 1);
-    showMessage("ページから文章を取得しています…");
+    setProgress(msg("progressGettingText"), 0, 1);
+    showMessage(msg("messageGettingText"));
 
     const page = await sendToTab(
       targetTabId,
@@ -1182,15 +1220,17 @@ translateButton.addEventListener("click", async () => {
 
     if (!page.items.length) {
       showMessage(
-        "未翻訳の文章はありません。"
+        msg("noUntranslatedText")
       );
       return;
     }
 
     if (page.characterCount > MAX_TOTAL_CHARS) {
       throw new Error(
-        `このページは約${page.characterCount.toLocaleString()}文字あります。` +
-        `上限${MAX_TOTAL_CHARS.toLocaleString()}文字を超えています。`
+        msg("errorPageTooLong", [
+        page.characterCount.toLocaleString(UI_LOCALE),
+        MAX_TOTAL_CHARS.toLocaleString(UI_LOCALE)
+      ])
       );
     }
 
@@ -1203,13 +1243,13 @@ translateButton.addEventListener("click", async () => {
       if (cancelRequested) break;
 
       setProgress(
-        "AI翻訳中",
+        msg("progressAI"),
         index,
         batches.length
       );
 
       showMessage(
-        `AI翻訳中… バッチ ${index + 1}/${batches.length}`
+        msg("messageAIBatch", [String(index + 1), String(batches.length)])
       );
 
       let translations;
@@ -1225,15 +1265,18 @@ translateButton.addEventListener("click", async () => {
         }
 
         throw new Error(
-          `バッチ ${index + 1}/${batches.length}: ` +
-          `${error?.message || String(error)}`
+          msg("errorBatch", [
+          String(index + 1),
+          String(batches.length),
+          error?.message || String(error)
+        ])
         );
       }
 
       if (cancelRequested) break;
 
       setProgress(
-        "ページへ反映中",
+        msg("progressApplying"),
         index,
         batches.length
       );
@@ -1248,15 +1291,18 @@ translateButton.addEventListener("click", async () => {
         );
       } catch (error) {
         throw new Error(
-          `バッチ ${index + 1}/${batches.length} の反映: ` +
-          `${error?.message || String(error)}`
+          msg("errorApplyBatch", [
+          String(index + 1),
+          String(batches.length),
+          error?.message || String(error)
+        ])
         );
       }
 
       changedTotal += applied.changedCount;
 
       setProgress(
-        "翻訳中",
+        msg("progressTranslating"),
         index + 1,
         batches.length
       );
@@ -1264,14 +1310,13 @@ translateButton.addEventListener("click", async () => {
 
     if (cancelRequested) {
       showMessage(
-        `翻訳をキャンセルしました。すでに反映済みの${changedTotal}か所は残っています。` +
-        `「原文を表示」で元の文章を表示できます。`
+        msg("translationCancelled", String(changedTotal))
       );
     } else {
       await showTranslatedAfterTranslation(targetTabId);
 
       showMessage(
-        `翻訳完了: ${changedTotal}か所を翻訳しました。`
+        msg("translationComplete", String(changedTotal))
       );
     }
   } catch (error) {
@@ -1289,8 +1334,8 @@ cancelButton.addEventListener("click", () => {
 
   cancelRequested = true;
   cancelButton.disabled = true;
-  progressText.textContent = "キャンセル中…";
-  showMessage("現在のAIリクエストをキャンセルしています…");
+  progressText.textContent = msg("progressCancelling");
+  showMessage(msg("messageCancelling"));
 
   if (currentController) {
     currentController.abort();
@@ -1300,7 +1345,7 @@ cancelButton.addEventListener("click", () => {
 showOriginalButton.addEventListener("click", async () => {
   try {
     showOriginalButton.disabled = true;
-    showMessage("原文表示へ切り替えています…");
+    showMessage(msg("messageSwitchingOriginal"));
 
     const tab = await getActiveTab();
     const response = await sendToTab(
@@ -1310,7 +1355,7 @@ showOriginalButton.addEventListener("click", async () => {
 
     updatePageDisplay(response);
     showMessage(
-      `原文を表示しました。翻訳キャッシュは保持されています。`
+      msg("messageOriginalShown")
     );
   } catch (error) {
     showMessage(friendlyError(error));
@@ -1322,7 +1367,7 @@ showOriginalButton.addEventListener("click", async () => {
 showTranslationButton.addEventListener("click", async () => {
   try {
     showTranslationButton.disabled = true;
-    showMessage("翻訳文表示へ切り替えています…");
+    showMessage(msg("messageSwitchingTranslation"));
 
     const tab = await getActiveTab();
     const response = await sendToTab(
@@ -1332,7 +1377,7 @@ showTranslationButton.addEventListener("click", async () => {
 
     updatePageDisplay(response);
     showMessage(
-      `保存済みの翻訳文を表示しました。AI通信は行っていません。`
+      msg("messageTranslationShown")
     );
   } catch (error) {
     showMessage(friendlyError(error));
@@ -1344,7 +1389,7 @@ showTranslationButton.addEventListener("click", async () => {
 clearCacheButton.addEventListener("click", async () => {
   try {
     clearCacheButton.disabled = true;
-    showMessage("現在設定の保存キャッシュを削除しています…");
+    showMessage(msg("messageDeletingCurrentCache"));
 
     const tab = await getActiveTab();
     const response = await sendToTab(
@@ -1355,7 +1400,7 @@ clearCacheButton.addEventListener("click", async () => {
     updatePageDisplay(response);
 
     showMessage(
-      "現在の翻訳設定に対応する保存キャッシュを削除しました。現在のタブ内一時キャッシュは、タブを閉じるまで利用できます。"
+      msg("messageCurrentCacheDeleted")
     );
   } catch (error) {
     showMessage(friendlyError(error));
@@ -1386,7 +1431,7 @@ browser.runtime.onMessage.addListener(
           message.pendingNodeCount > 0
         ) {
           showMessage(
-            `新しい文章を${message.pendingNodeCount}か所検出しました。`
+            msg("messageNewTextDetected", String(message.pendingNodeCount))
           );
         }
       })
@@ -1414,7 +1459,7 @@ loadSettings()
   .catch((error) => {
     console.error(error);
     showMessage(
-      `初期化エラー: ${error?.message || String(error)}`
+      msg("initializationError", error?.message || String(error))
     );
   });
 

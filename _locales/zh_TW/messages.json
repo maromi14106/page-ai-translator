@@ -1,0 +1,606 @@
+{
+  "extensionName": {
+    "message": "Page AI Translator"
+  },
+  "extensionDescription": {
+    "message": "從 Firefox 側邊欄使用 OpenAI API 或 Ollama 對網頁進行 AI 翻譯，支援選取文字翻譯、多語言、翻譯規則與永久快取。"
+  },
+  "actionTitle": {
+    "message": "開啟 Page AI Translator"
+  },
+  "commandToggleSidebar": {
+    "message": "切換 Page AI Translator 側邊欄"
+  },
+  "labelEngine": {
+    "message": "翻譯引擎"
+  },
+  "engineOllama": {
+    "message": "Ollama（本機）"
+  },
+  "labelOpenAIModel": {
+    "message": "OpenAI 模型"
+  },
+  "labelApiKey": {
+    "message": "API 金鑰"
+  },
+  "hintApiKeyNotStored": {
+    "message": "API 金鑰不會被儲存。"
+  },
+  "hintOpenAIPrivacy": {
+    "message": "在 OpenAI 模式下，待翻譯的頁面文字會傳送至 api.openai.com。首次使用前 Firefox 會要求傳送權限。"
+  },
+  "labelOllamaModel": {
+    "message": "Ollama 模型"
+  },
+  "buttonRefreshList": {
+    "message": "重新整理清單"
+  },
+  "ollamaModelPrompt": {
+    "message": "請先載入模型清單"
+  },
+  "hintOllamaPrivacy": {
+    "message": "在 Ollama 模式下，待翻譯文字會傳送至本機 Ollama。"
+  },
+  "headingTranslationRules": {
+    "message": "翻譯規則"
+  },
+  "labelTargetLanguage": {
+    "message": "目標語言"
+  },
+  "labelTranslationStyle": {
+    "message": "翻譯風格"
+  },
+  "styleNatural": {
+    "message": "自然易讀"
+  },
+  "styleFaithful": {
+    "message": "忠實原文"
+  },
+  "styleConcise": {
+    "message": "簡潔"
+  },
+  "labelTerminology": {
+    "message": "專業術語"
+  },
+  "terminologyBalanced": {
+    "message": "優先使用目標語言中的自然表達"
+  },
+  "terminologyPreserve": {
+    "message": "常見專業術語優先保留原文"
+  },
+  "terminologyTranslate": {
+    "message": "可行時翻譯為目標語言"
+  },
+  "labelCustomInstructions": {
+    "message": "附加規則（選填）"
+  },
+  "placeholderCustomInstructions": {
+    "message": "範例：遊戲中的技能名稱保留英文"
+  },
+  "hintRulesApply": {
+    "message": "這些設定同時套用於整頁翻譯與選取文字翻譯。"
+  },
+  "labelPageState": {
+    "message": "頁面狀態"
+  },
+  "statusChecking": {
+    "message": "正在檢查…"
+  },
+  "labelUntranslated": {
+    "message": "未翻譯"
+  },
+  "labelSavedCache": {
+    "message": "已儲存快取"
+  },
+  "buttonClearCurrentCache": {
+    "message": "刪除目前設定的已儲存快取"
+  },
+  "headingSelectionTranslation": {
+    "message": "選取文字翻譯"
+  },
+  "hintSelectionTranslation": {
+    "message": "請先在網頁中選取文字，再按下按鈕。只會翻譯頁面中選取的部分。"
+  },
+  "labelSelection": {
+    "message": "選取範圍"
+  },
+  "statusUnchecked": {
+    "message": "未檢查"
+  },
+  "buttonTranslateSelection": {
+    "message": "翻譯選取文字"
+  },
+  "buttonTranslateUntranslated": {
+    "message": "翻譯未翻譯部分"
+  },
+  "buttonCancelTranslation": {
+    "message": "取消翻譯"
+  },
+  "buttonShowOriginal": {
+    "message": "顯示原文"
+  },
+  "buttonShowTranslation": {
+    "message": "顯示譯文"
+  },
+  "statusPreparing": {
+    "message": "正在準備…"
+  },
+  "statusReady": {
+    "message": "準備完成。"
+  },
+  "headingCacheManagement": {
+    "message": "快取管理"
+  },
+  "cacheSummaryChecking": {
+    "message": "正在檢查已儲存的翻譯快取…"
+  },
+  "buttonClearAllCaches": {
+    "message": "刪除全部翻譯快取"
+  },
+  "footerShortcut": {
+    "message": "按 Ctrl + Shift + . 可切換側邊欄。"
+  },
+  "profileDefault": {
+    "message": "$LANGUAGE$ · 標準設定",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "unknown": {
+    "message": "未知"
+  },
+  "styleShortNatural": {
+    "message": "自然"
+  },
+  "styleShortFaithful": {
+    "message": "忠實"
+  },
+  "styleShortConcise": {
+    "message": "簡潔"
+  },
+  "styleShortStandard": {
+    "message": "標準"
+  },
+  "profileLabel": {
+    "message": "$LANGUAGE$ · $STYLE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      },
+      "style": {
+        "content": "$2"
+      }
+    }
+  },
+  "pagePartiallyTranslated": {
+    "message": "部分已翻譯（快取 $COUNT$ 項）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslateNewText": {
+    "message": "將新加入的文字翻譯為 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingTranslation": {
+    "message": "正在顯示譯文（$COUNT$ 項）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageShowingOriginal": {
+    "message": "正在顯示原文（已快取 $COUNT$ 項翻譯）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageMixed": {
+    "message": "原文與譯文混合（快取 $COUNT$ 項）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "buttonTranslatePendingTo": {
+    "message": "將未翻譯部分翻譯為 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageOriginal": {
+    "message": "原文"
+  },
+  "buttonTranslatePageTo": {
+    "message": "將此頁面翻譯為 $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsNodesChars": {
+    "message": "$NODES$ 項 / 約 $CHARS$ 個字元",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "countEntries": {
+    "message": "$COUNT$ 項",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "none": {
+    "message": "無"
+  },
+  "errorNoActiveTab": {
+    "message": "無法取得目前使用中的分頁。"
+  },
+  "errorContentScriptStart": {
+    "message": "無法啟動頁面內容指令碼。"
+  },
+  "errorPageOperation": {
+    "message": "頁面操作失敗。"
+  },
+  "errorTranslationsArrayMissing": {
+    "message": "AI 回應中沒有 translations 陣列。"
+  },
+  "errorTranslationsMissing": {
+    "message": "AI 回應缺少 $COUNT$ 項翻譯。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOpenAIConsent": {
+    "message": "OpenAI 模式需要權限，才能將待翻譯的頁面文字傳送至 OpenAI API。"
+  },
+  "errorOpenAIKeyRequired": {
+    "message": "請輸入 OpenAI API 金鑰。"
+  },
+  "errorOpenAIModelRequired": {
+    "message": "請輸入 OpenAI 模型名稱。"
+  },
+  "errorOpenAIResultMissing": {
+    "message": "無法從 OpenAI API 取得翻譯結果。"
+  },
+  "errorOpenAIJson": {
+    "message": "無法將 OpenAI 翻譯結果解析為 JSON。"
+  },
+  "ollamaConnectionTestHttp": {
+    "message": "Ollama 連線測試：HTTP $STATUS$ $TEXT$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorOllamaConnectionJson": {
+    "message": "Ollama 連線測試：無法解析 JSON 回應。"
+  },
+  "ollamaModelNotFound": {
+    "message": "找不到模型"
+  },
+  "ollamaConnectedNoModels": {
+    "message": "已連線至 Ollama，但找不到模型。"
+  },
+  "ollamaConnectedModels": {
+    "message": "Ollama 連線成功。偵測到 $COUNT$ 個模型。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ollamaModelFetchError": {
+    "message": "Ollama 模型錯誤：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorOllamaModelRequired": {
+    "message": "請選擇 Ollama 模型。"
+  },
+  "errorOllamaResultMissing": {
+    "message": "無法從 Ollama 取得翻譯結果。"
+  },
+  "errorOllamaJson": {
+    "message": "無法將 Ollama 翻譯結果解析為 JSON。"
+  },
+  "errorHostPermission": {
+    "message": "此擴充套件沒有存取此網站的權限。請在 Firefox 設定中允許此擴充套件存取網站。"
+  },
+  "errorProtectedPage": {
+    "message": "此頁面受 Firefox 保護，無法翻譯。請在一般 http/https 網頁上嘗試。"
+  },
+  "errorOllamaNetwork": {
+    "message": "無法與 Ollama API 通訊。請確認 Ollama 正在執行。"
+  },
+  "errorOllamaForbidden": {
+    "message": "Ollama 拒絕了來自 Firefox 擴充套件的連線。在 Windows 上，請設定 OLLAMA_ORIGINS=moz-extension://*，然後完全結束並重新啟動 Ollama。"
+  },
+  "errorPageDisconnected": {
+    "message": "與頁面的連線已中斷。請確認分頁是否重新整理或導向其他頁面。"
+  },
+  "errorGeneric": {
+    "message": "錯誤：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "pageUnsupported": {
+    "message": "不支援 / 未檢查"
+  },
+  "dateUnknown": {
+    "message": "日期時間未知"
+  },
+  "cacheSummarySaved": {
+    "message": "已儲存 $COUNT$ 個頁面/翻譯設定快取",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cacheSummaryEmpty": {
+    "message": "沒有已儲存的翻譯快取。"
+  },
+  "cacheItemMeta": {
+    "message": "$PROFILE$ / $COUNT$ 項 / $DATE$",
+    "placeholders": {
+      "profile": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      },
+      "date": {
+        "content": "$3"
+      }
+    }
+  },
+  "buttonDeleteThisCache": {
+    "message": "刪除此快取"
+  },
+  "cacheDeletedSelected": {
+    "message": "已刪除選取的已儲存快取。"
+  },
+  "cacheListError": {
+    "message": "無法載入快取清單：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmClearAllCaches": {
+    "message": "要刪除 Page AI Translator 的全部已儲存翻譯快取嗎？\n\n翻譯引擎與翻譯規則等設定會保留。"
+  },
+  "cacheAllDeleted": {
+    "message": "已刪除全部已儲存翻譯快取。目前開啟分頁中的暫存快取會保留到關閉分頁為止。"
+  },
+  "selectionStats": {
+    "message": "$NODES$ 項 / 約 $CHARS$ 個字元",
+    "placeholders": {
+      "nodes": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "selectionNone": {
+    "message": "未選取"
+  },
+  "selectionPrompt": {
+    "message": "請在網頁上選取要翻譯的文字，再按一次按鈕。"
+  },
+  "errorSelectionTooLong": {
+    "message": "選取範圍約有 $CURRENT$ 個字元，超過 $MAX$ 個字元的上限。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressSelectionAI": {
+    "message": "正在用 AI 翻譯選取文字"
+  },
+  "messageSelectionAIBatch": {
+    "message": "正在用 AI 翻譯選取文字… 批次 $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorSelectionBatch": {
+    "message": "選取文字批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressSelection": {
+    "message": "正在翻譯選取文字"
+  },
+  "selectionCancelled": {
+    "message": "已取消選取文字翻譯。頁面未套用任何變更。"
+  },
+  "selectionComplete": {
+    "message": "選取文字翻譯完成：已替換 $COUNT$ 項。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressGettingText": {
+    "message": "正在取得頁面文字"
+  },
+  "messageGettingText": {
+    "message": "正在從頁面取得文字…"
+  },
+  "noUntranslatedText": {
+    "message": "沒有未翻譯的文字。"
+  },
+  "errorPageTooLong": {
+    "message": "此頁面約有 $CURRENT$ 個字元，超過 $MAX$ 個字元的上限。",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "progressAI": {
+    "message": "正在用 AI 翻譯"
+  },
+  "messageAIBatch": {
+    "message": "正在用 AI 翻譯… 批次 $CURRENT$/$TOTAL$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "errorBatch": {
+    "message": "批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressApplying": {
+    "message": "正在套用至頁面"
+  },
+  "errorApplyBatch": {
+    "message": "套用批次 $CURRENT$/$TOTAL$：$ERROR$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      },
+      "error": {
+        "content": "$3"
+      }
+    }
+  },
+  "progressTranslating": {
+    "message": "正在翻譯"
+  },
+  "translationCancelled": {
+    "message": "已取消翻譯。已套用的 $COUNT$ 項仍維持翻譯狀態。可使用「顯示原文」查看原文。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "translationComplete": {
+    "message": "翻譯完成：已翻譯 $COUNT$ 項。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "progressCancelling": {
+    "message": "正在取消…"
+  },
+  "messageCancelling": {
+    "message": "正在取消目前的 AI 請求…"
+  },
+  "messageSwitchingOriginal": {
+    "message": "正在切換到原文…"
+  },
+  "messageOriginalShown": {
+    "message": "已顯示原文。翻譯快取已保留。"
+  },
+  "messageSwitchingTranslation": {
+    "message": "正在切換到譯文…"
+  },
+  "messageTranslationShown": {
+    "message": "已顯示已儲存的譯文。未送出 AI 請求。"
+  },
+  "messageDeletingCurrentCache": {
+    "message": "正在刪除目前設定的已儲存快取…"
+  },
+  "messageCurrentCacheDeleted": {
+    "message": "已刪除目前翻譯設定對應的已儲存快取。此分頁中的暫存快取會保留到關閉分頁為止。"
+  },
+  "messageNewTextDetected": {
+    "message": "偵測到 $COUNT$ 項新文字。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "initializationError": {
+    "message": "初始化錯誤：$ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  }
+}
