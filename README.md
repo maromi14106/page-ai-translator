@@ -44,24 +44,25 @@ Page AI TranslatorからローカルOllamaへ接続する場合、
 Firefox拡張機能からのアクセスを許可する必要があります。
 
 WindowsではPowerShellで次を実行してください。
-
 ```powershell
 [Environment]::SetEnvironmentVariable(
     "OLLAMA_ORIGINS",
     "moz-extension://*",
     "User"
 )
-
+```
 設定後、Ollamaを完全に終了してから再起動してください。
 現在の設定を確認するには、次を実行します。
+```powershell
 [Environment]::GetEnvironmentVariable(
     "OLLAMA_ORIGINS",
     "User"
 )
-
+```
 正常なら次のように表示されます。
+```powershell
 moz-extension://*
-
+```
 403 Forbiddenが表示される場合
 Ollamaで翻訳したときに 403 Forbidden が表示される場合は、
 OLLAMA_ORIGINS が未設定、またはOllamaが設定変更後に
