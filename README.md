@@ -23,6 +23,21 @@ Firefox Add-onsからインストールできます。
 - 動的ページ内容の検出
 - `Ctrl + Shift + .` でサイドバーを開閉
 
+## UI対応言語
+
+Page AI TranslatorのUIは、Firefoxの表示言語に合わせて自動的に切り替わります。
+
+- 日本語
+- English
+- 한국어
+- 简体中文
+- 繁體中文
+- Français
+- Deutsch
+- Español
+
+翻訳先言語の設定とは独立しています。
+
 ## Ollamaのセットアップ
 
 Page AI TranslatorからローカルOllamaへ接続する場合、
